@@ -5,8 +5,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Your Name",
-            "email": "your.email@example.com"
+            "name": "Ashir Ali Butt",
+            "email": "ashirbutt925@gmail.com"
         }
     ],
     "require": {
@@ -36,9 +36,9 @@
         "login",
         "sanctum"
     ],
-    "homepage": "https://github.com/yourusername/client-for-authentication-provider",
+    "homepage": "https://github.com/ashirbutt925/client-for-authentication-provider",
     "support": {
-        "issues": "https://github.com/yourusername/client-for-authentication-provider/issues",
-        "source": "https://github.com/yourusername/client-for-authentication-provider"
+        "issues": "https://github.com/ashirbutt925/client-for-authentication-provider/issues",
+        "source": "https://github.com/ashirbutt925/client-for-authentication-provider"
     }
 }
