@@ -22,8 +22,14 @@ class ClientForAuthenticationProviderServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
-        
+        $appRoutes = base_path('routes/client/authentication-provider.php');
+
+        if (file_exists($appRoutes)) {
+            require $appRoutes; // 5.3-safe; prefer app's published routes
+        } else {
+            require __DIR__.'/../routes/api.php'; // fallback to package routes
+        }
+
         $this->publishes([
             __DIR__.'/../config/client-for-authentication-provider.php' => config_path('client-for-authentication-provider.php'),
         ], 'client-for-authentication-provider-config');
