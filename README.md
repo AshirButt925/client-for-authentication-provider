@@ -28,6 +28,24 @@ php artisan vendor:publish --tag=client-for-authentication-provider-routes
 php artisan vendor:publish --tag=client-for-authentication-provider-controllers
 ```
 
+
+### Manual service provider registration (Laravel 5.3/5.4)
+
+Add the service provider to `config/app.php`:
+
+```php
+ClientForAuthenticationProvider\ClientForAuthenticationProviderServiceProvider::class,
+```
+
+Then publish assets (specify the provider explicitly):
+
+```bash
+php artisan vendor:publish --provider="ClientForAuthenticationProvider\ClientForAuthenticationProviderServiceProvider" --tag=client-for-authentication-provider-config
+php artisan vendor:publish --provider="ClientForAuthenticationProvider\ClientForAuthenticationProviderServiceProvider" --tag=client-for-authentication-provider-routes
+php artisan vendor:publish --provider="ClientForAuthenticationProvider\ClientForAuthenticationProviderServiceProvider" --tag=client-for-authentication-provider-controllers
+```
+```
+
 ## Configuration
 
 The package configuration file is located at `config/client-for-authentication-provider.php`. You can customize the following options:
