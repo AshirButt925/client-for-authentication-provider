@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use ClientForAuthenticationProvider\Http\Controllers\ClientAuthController;
+use App\Http\Controllers\ClientForAuthenticationProvider\ClientAuthController;
 
 Route::group([
     'prefix' => config('client-for-authentication-provider.route_prefix', 'api'),

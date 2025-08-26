@@ -1,6 +1,6 @@
 <?php
 
-namespace ClientForAuthenticationProvider\Http\Controllers;
+namespace App\Http\Controllers\ClientForAuthenticationProvider;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
