@@ -25,10 +25,9 @@ class ClientForAuthenticationProviderServiceProvider extends ServiceProvider
         $appRoutes = base_path('routes/client/authentication-provider.php');
 
         if (file_exists($appRoutes)) {
-            require $appRoutes;
+            require $appRoutes; // 5.3-safe; prefer app's published routes
         } else {
-            // Load routes with version-specific syntax
-            $this->loadVersionCompatibleRoutes();
+            require __DIR__.'/../routes/api.php'; // fallback to package routes
         }
 
         $this->publishes([
@@ -42,21 +41,5 @@ class ClientForAuthenticationProviderServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/Http/Controllers/' => base_path('app/Http/Controllers/ClientForAuthenticationProvider/'),
         ], 'client-for-authentication-provider-controllers');
-    }
-
-    private function loadVersionCompatibleRoutes()
-    {
-        Route::group([
-            'prefix' => config('client-for-authentication-provider.route_prefix', 'api'),
-            'middleware' => config('client-for-authentication-provider.route_middleware', 'api'),
-        ], function () {
-            // Laravel 5.3-8.x syntax
-            if (version_compare(app()->version(), '8.0', '<')) {
-                Route::post('/create-or-login-user', 'ClientForAuthenticationProvider\Http\Controllers\ClientAuthController@miniAppCreateOrLoginUser');
-            } else {
-                // Laravel 8.x+ syntax
-                Route::post('/create-or-login-user', [\ClientForAuthenticationProvider\Http\Controllers\ClientAuthController::class, 'miniAppCreateOrLoginUser']);
-            }
-        });
     }
 }
